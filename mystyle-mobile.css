@@ -1,0 +1,630 @@
+
+/* =========================================================
+   MyStyle — Mobile UX
+   Cargar DESPUÉS de style.css
+   Mantiene intacto el layout de escritorio.
+   ========================================================= */
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Tablets: aprovechamos mejor el ancho sin tocar desktop */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .page-wrapper {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 900px;
+  }
+
+  .sidebar-left,
+  .sidebar-right {
+    display: none;
+  }
+
+  .main-content {
+    width: 100%;
+  }
+
+  .navbar-inner {
+    max-width: 900px;
+  }
+}
+
+/* =========================================================
+   TELÉFONOS
+   ========================================================= */
+@media (max-width: 768px) {
+
+  /* ---------- navegación inferior tipo app ---------- */
+  body {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom));
+    min-height: 100svh;
+  }
+
+  .navbar {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 2500;
+    border-top: var(--bw, 1px) var(--bs, solid) var(--border-color);
+    border-bottom: 0;
+    box-shadow: 0 -5px 22px rgba(0,0,0,.10);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .navbar-inner {
+    width: 100%;
+    max-width: none;
+    min-height: 64px;
+    padding: 7px 6px;
+    display: block;
+  }
+
+  .navbar-logo {
+    display: none;
+  }
+
+  .navbar-nav {
+    width: 100%;
+    height: 64px;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 2px;
+    align-items: stretch;
+    flex-wrap: nowrap;
+  }
+
+  .nav-link {
+    min-width: 0;
+    min-height: 54px;
+    padding: 5px 2px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    font-size: .68rem;
+    line-height: 1.05;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .nav-icon {
+    display: block;
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  .nav-link.active {
+    box-shadow: none;
+  }
+
+  /* ---------- layout principal ---------- */
+  .page-wrapper {
+    width: 100%;
+    max-width: none;
+    display: block;
+    padding: 12px;
+    margin: 0;
+  }
+
+  .sidebar-left,
+  .sidebar-right {
+    display: none;
+  }
+
+  .main-content {
+    width: 100%;
+    min-height: auto;
+  }
+
+  /* ---------- cabeceras ---------- */
+  .page-header {
+    margin: 4px 2px 14px;
+  }
+
+  .page-header h1 {
+    font-size: clamp(1.45rem, 7vw, 2rem);
+    line-height: 1.15;
+  }
+
+  .page-header p {
+    font-size: .85rem;
+    line-height: 1.35;
+  }
+
+  /* ---------- tarjetas ---------- */
+  .profile-card-mini,
+  .composer-box,
+  .create-panel,
+  .profile-full,
+  .settings-panel,
+  .trending-box,
+  .decoration-box,
+  .post-card,
+  .user-card,
+  .friend-card {
+    border-radius: max(14px, calc(var(--rad, 20px) * .75));
+  }
+
+  .post-card {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+
+  .post-card:hover,
+  .user-card:hover,
+  .profile-card-mini:hover {
+    transform: none;
+  }
+
+  /* ---------- publicar desde el feed ---------- */
+  .composer-box {
+    padding: 12px;
+    margin-bottom: 14px;
+  }
+
+  .composer-header {
+    gap: 9px;
+    margin-bottom: 9px;
+  }
+
+  .composer-avatar {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+  }
+
+  .composer-input {
+    min-width: 0;
+    width: 100%;
+    font-size: 16px; /* evita zoom automático en iOS */
+    padding: 11px 12px;
+  }
+
+  .composer-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+  }
+
+  .composer-actions .btn-publish {
+    grid-column: 1 / -1;
+  }
+
+  .btn-compose,
+  .btn-secondary,
+  .btn-publish,
+  .user-btn,
+  .btn-edit-profile,
+  .btn-edit-mini {
+    min-height: 44px;
+  }
+
+  /* ---------- posts ---------- */
+  .posts-feed {
+    gap: 12px;
+  }
+
+  .post-header {
+    gap: 9px;
+    margin-bottom: 9px;
+  }
+
+  .post-avatar {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+  }
+
+  .post-user {
+    font-size: .95rem;
+  }
+
+  .post-handle,
+  .post-date {
+    font-size: .74rem;
+  }
+
+  .post-content {
+    font-size: .94rem;
+    line-height: 1.5;
+  }
+
+  .post-image {
+    max-height: none;
+    aspect-ratio: auto;
+    object-fit: contain;
+  }
+
+  .post-actions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .post-action {
+    min-width: 0;
+    min-height: 42px;
+    padding: 8px 5px;
+    font-size: .78rem;
+  }
+
+  /* ---------- explorar ---------- */
+  .search-container {
+    margin-bottom: 12px;
+    position: sticky;
+    top: 8px;
+    z-index: 20;
+  }
+
+  .search-input {
+    min-height: 46px;
+    font-size: 16px;
+  }
+
+  .users-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .user-card {
+    padding: 12px 9px;
+  }
+
+  .user-card img {
+    width: 68px;
+    height: 68px;
+  }
+
+  .user-card h4 {
+    font-size: .9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .user-card p {
+    font-size: .75rem;
+  }
+
+  /* ---------- crear ---------- */
+  .create-panel {
+    width: 100%;
+    max-width: none;
+    padding: 15px;
+  }
+
+  .create-panel h1,
+  .settings-panel h1 {
+    font-size: clamp(1.4rem, 7vw, 1.9rem);
+  }
+
+  .post-textarea {
+    min-height: 150px;
+    font-size: 16px;
+  }
+
+  .upload-area {
+    min-height: 135px;
+    padding: 22px 14px;
+    display: grid;
+    place-items: center;
+    align-content: center;
+  }
+
+  .create-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  /* ---------- perfil ---------- */
+  .profile-full {
+    overflow: hidden;
+  }
+
+  .profile-banner {
+    min-height: 105px;
+  }
+
+  .profile-header {
+    padding: 0 14px 14px;
+    margin-top: -38px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-pic {
+    width: 82px;
+    height: 82px;
+  }
+
+  .profile-info {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .profile-info h1 {
+    font-size: 1.45rem;
+    overflow-wrap: anywhere;
+  }
+
+  .profile-bio,
+  .profile-joined {
+    font-size: .82rem;
+  }
+
+  .btn-edit-profile {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .profile-stats-bar {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    padding: 8px;
+  }
+
+  .stat-item {
+    min-width: 0;
+    padding: 8px 4px;
+  }
+
+  .stat-item strong {
+    font-size: 1rem;
+  }
+
+  .stat-item span {
+    font-size: .68rem;
+  }
+
+  .profile-tabs {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .profile-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-btn {
+    flex: 1 0 30%;
+    min-height: 44px;
+    white-space: nowrap;
+  }
+
+  .friends-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  /* ---------- chat: lista horizontal + ventana debajo ---------- */
+  .chat-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: calc(100svh - 160px);
+    height: calc(100svh - 160px);
+    border-radius: 16px;
+  }
+
+  .chat-sidebar {
+    flex: 0 0 auto;
+    max-height: 104px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .chat-sidebar-header {
+    padding: 9px 12px 6px;
+  }
+
+  .chat-sidebar-header h3 {
+    font-size: .9rem;
+  }
+
+  .chat-list {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 6px 8px 9px;
+    gap: 7px;
+    scrollbar-width: thin;
+  }
+
+  .chat-item {
+    flex: 0 0 74px;
+    width: 74px;
+    padding: 5px;
+    gap: 3px;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 12px;
+  }
+
+  .chat-item-avatar {
+    width: 42px;
+    height: 42px;
+  }
+
+  .chat-item-meta {
+    width: 100%;
+  }
+
+  .chat-item-name {
+    font-size: .68rem;
+  }
+
+  .chat-item-preview {
+    display: none;
+  }
+
+  .chat-window {
+    min-height: 0;
+    flex: 1;
+  }
+
+  .chat-header {
+    min-height: 56px;
+    padding: 8px 12px;
+  }
+
+  .chat-header-avatar {
+    width: 38px;
+    height: 38px;
+  }
+
+  .chat-messages {
+    padding: 12px 10px;
+    gap: 8px;
+  }
+
+  .chat-message {
+    max-width: 86%;
+    padding: 9px 11px;
+    font-size: .9rem;
+  }
+
+  .chat-form {
+    padding: 8px;
+    gap: 7px;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
+  }
+
+  .chat-form input {
+    min-height: 44px;
+    font-size: 16px;
+  }
+
+  .chat-form .btn-publish {
+    width: auto;
+    min-width: 74px;
+    padding-inline: 10px;
+  }
+
+  /* ---------- configuración ---------- */
+  .settings-panel {
+    padding: 15px;
+  }
+
+  .settings-section {
+    padding: 12px;
+  }
+
+  .themes-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .theme-card {
+    min-width: 0;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .settings-form input,
+  .settings-form textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  /* ---------- modales ---------- */
+  .modal {
+    padding: 10px;
+    align-items: flex-end;
+  }
+
+  .modal-content {
+    width: 100%;
+    max-width: none;
+    max-height: 90svh;
+    overflow-y: auto;
+    padding: 18px 15px;
+    border-radius: 20px 20px 12px 12px;
+  }
+
+  .auth-screen {
+    padding: 14px;
+  }
+
+  .auth-screen .modal-content {
+    width: 100%;
+  }
+
+  /* ---------- zonas táctiles ---------- */
+  [data-profile],
+  button,
+  .nav-link,
+  .theme-card,
+  .tab-btn,
+  .upload-area {
+    touch-action: manipulation;
+  }
+}
+
+/* =========================================================
+   TELÉFONOS MUY PEQUEÑOS
+   ========================================================= */
+@media (max-width: 380px) {
+
+  .page-wrapper {
+    padding: 9px;
+  }
+
+  .nav-link {
+    font-size: .61rem;
+  }
+
+  .nav-icon {
+    font-size: 1.12rem;
+  }
+
+  .navbar-inner,
+  .navbar-nav {
+    height: 60px;
+  }
+
+  .navbar-nav {
+    min-height: 60px;
+  }
+
+  .post-action {
+    font-size: .72rem;
+  }
+
+  .users-grid,
+  .friends-grid {
+    gap: 7px;
+  }
+
+  .create-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   PANTALLAS TÁCTILES GRANDES / TABLETS VERTICALES
+   ========================================================= */
+@media (hover: none) and (pointer: coarse) and (min-width: 769px) {
+  button,
+  .nav-link,
+  .tab-btn,
+  .user-btn {
+    min-height: 44px;
+  }
+}
