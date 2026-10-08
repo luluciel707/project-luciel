@@ -373,7 +373,32 @@ select {
     width: 100%;
     max-width: 280px;
   }
+.profile-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+}
 
+.btn-message-profile {
+    width: 100%;
+    max-width: 280px;
+    min-height: 44px;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    background: var(--accent, #82A7D8);
+    color: white;
+}
+
+.btn-message-profile:hover {
+    opacity: 0.9;
+}
   .profile-stats-bar {
     grid-template-columns: repeat(3, 1fr);
     gap: 5px;
