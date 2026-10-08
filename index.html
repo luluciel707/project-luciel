@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyStyle - Tu Espacio Personal en Internet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Chewy&family=Cormorant+Garamond:wght@500;700&family=DotGothic16&family=Fredoka:wght@500;700&family=Gaegu:wght@400;700&family=IM+Fell+English&family=Inter:wght@500;800&family=Nunito:wght@400;700&family=Pixelify+Sans:wght@400;700&family=Poppins:wght@500;600&family=Quicksand:wght@500;700&family=Righteous&family=Space+Mono&family=Special+Elite&family=UnifrakturCook:wght@700&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-pastel">
+    <!-- ACCESO -->
+    <div id="auth-screen" class="auth-screen">
+        <div class="modal-content">
+            <h2 id="auth-title">Entrar a tu rincón</h2>
+            <form id="auth-form" class="edit-form">
+                <div class="form-group hidden" id="auth-user-group"><label>Usuario</label><input type="text" id="auth-user" placeholder="tu_usuario"></div>
+                <div class="form-group"><label>Correo</label><input type="email" id="auth-email" required></div>
+                <div class="form-group"><label>Contraseña</label><input type="password" id="auth-pass" minlength="6" required></div>
+                <button type="submit" class="btn-publish" id="auth-submit">Entrar ✨</button>
+                <a href="#" id="auth-toggle">Crear cuenta</a>
+                <p id="auth-msg"></p>
+            </form>
+        </div>
+    </div>
+
+ <nav class="navbar">
+    <div class="navbar-inner">
+        <div class="navbar-logo"><span class="logo-icon">✨</span><span class="logo-text">MyStyle</span></div>
+        <div class="navbar-nav">
+            <a href="#" class="nav-link active" data-page="feed"><span class="nav-icon">🏠</span> Inicio</a>
+            <a href="#" class="nav-link" data-page="explore"><span class="nav-icon">🔍</span> Explorar</a>
+            <a href="#" class="nav-link" data-page="create"><span class="nav-icon">✏️</span> Crear</a>
+            <a href="#" class="nav-link" data-page="chat"><span class="nav-icon">💬</span> Chat</a>
+            <a href="#" class="nav-link" data-page="profile"><span class="nav-icon">👤</span> Mi Perfil</a>
+            <a href="#" class="nav-link" data-page="settings"><span class="nav-icon">⚙️</span> Config</a>
+        </div>
+    </div>
+</nav>
+
+    <div class="page-wrapper">
+        <aside class="sidebar sidebar-left">
+            <div class="profile-card-mini">
+                <div class="profile-mini-header">
+                    <img id="mini-avatar" src="" alt="Avatar" class="mini-avatar">
+                    <div class="online-indicator"></div>
+                </div>
+                <h3 id="mini-name" class="mini-name"></h3>
+                <p id="mini-handle" class="mini-handle"></p>
+                <p id="mini-bio" class="mini-bio"></p>
+                <div class="mini-stats">
+                    <div class="mini-stat"><strong id="mini-posts">0</strong><span>posts</span></div>
+                    <div class="mini-stat"><strong id="mini-friends">0</strong><span>amigos</span></div>
+                </div>
+                <button class="btn-edit-mini" id="edit-profile-btn">Editar perfil ✏️</button>
+            </div>
+            <div class="decoration-box"><div class="decoration-title">🎀 Mood:</div><div id="current-mood" class="mood-display"></div></div>
+        </aside>
+
+        <main class="main-content">
+            <!-- INICIO -->
+            <section id="feed-page" class="page active">
+                <div class="page-header"><h1>✨ Tu Feed</h1><p>Descubre personas con estéticas únicas</p></div>
+                <div class="composer-box">
+                    <div class="composer-header">
+                        <img id="composer-avatar" src="" alt="Tú" class="composer-avatar">
+                        <input type="text" id="quick-post-input" class="composer-input" placeholder="¿Qué tienes en mente hoy?" maxlength="500">
+                    </div>
+                    <div class="composer-actions">
+                        <button class="btn-compose">📷 Foto</button>
+                        <button class="btn-compose">🎨 Emoji</button>
+                        <button class="btn-publish" id="quick-publish-btn">Compartir ✨</button>
+                    </div>
+                </div>
+                <div id="feed-posts" class="posts-feed"></div>
+            </section>
+
+            <!-- EXPLORAR -->
+            <section id="explore-page" class="page">
+                <div class="page-header"><h1>🔍 Explorar</h1><p>Descubre perfiles con mucha personalidad</p></div>
+                <div class="search-container"><input type="text" id="search-input" class="search-input" placeholder="Buscar personas..."></div>
+                <div id="explore-users" class="users-grid"></div>
+            </section>
+
+            <!-- CREAR -->
+            <section id="create-page" class="page">
+                <div class="create-panel">
+                    <h1>✨ Crear publicación</h1>
+                    <p class="create-subtitle">Comparte tu estética</p>
+                    <div class="create-form">
+                        <textarea id="full-post-input" class="post-textarea" maxlength="500" placeholder="Cuéntale a internet cómo te sientes, tu vibra..."></textarea>
+                        <div class="upload-area" id="upload-area">
+                            <span class="upload-icon">🖼️</span>
+                            <p>Haz clic para subir una imagen</p>
+                            <input type="file" id="file-input" hidden accept="image/*">
+                        </div>
+                        <div id="preview-container" class="preview-container hidden">
+                            <img id="preview-img" src="" alt="Vista previa">
+                            <button class="btn-remove-preview" id="remove-preview">✕</button>
+                        </div>
+                        <div class="create-actions">
+                            <button class="btn-secondary" id="draft-btn">Guardar borrador</button>
+                            <button class="btn-publish" id="full-publish-btn">Publicar ✨</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PERFIL -->
+            <section id="profile-page" class="page">
+                <div class="profile-full">
+                    <div class="profile-banner"><div class="banner-content"><span class="banner-decoration">🌸</span></div></div>
+                    <div class="profile-header">
+                        <div class="profile-pic-wrapper">
+                            <img id="profile-avatar" src="" alt="Perfil" class="profile-pic">
+                            <div class="profile-status">activo</div>
+                        </div>
+                        <div class="profile-info">
+                            <h1 id="profile-name"></h1>
+                            <p id="profile-handle"></p>
+                            <p id="profile-bio"></p>
+                            <p class="profile-joined" id="profile-joined"></p>
+                            <p class="profile-joined" id="profile-common"></p>
+                        </div>
+                        <button class="btn-edit-profile" id="edit-profile-main">✏️ Editar</button>
+                    </div>
+                    <div class="profile-stats-bar">
+                        <div class="stat-item"><strong id="profile-stat-posts">0</strong><span>Posts</span></div>
+                        <div class="stat-item"><strong id="profile-stat-friends">0</strong><span>Amigos</span></div>
+                        <div class="stat-item"><strong id="profile-stat-likes">0</strong><span>Me gusta</span></div>
+                    </div>
+                    <div class="profile-tabs">
+                        <button class="tab-btn active" data-tab="posts">Posts</button>
+                        <button class="tab-btn" data-tab="friends">Amigos</button>
+                        <button class="tab-btn" data-tab="about">Acerca de</button>
+                    </div>
+                    <div class="tab-content-wrapper">
+                        <div class="tab-pane active" data-tab="posts"><div id="profile-posts" class="posts-feed"></div></div>
+                        <div class="tab-pane" data-tab="friends"><div id="profile-friends" class="friends-grid"></div></div>
+                        <div class="tab-pane" data-tab="about">
+                            <div class="about-section"><h3>Sobre mí</h3><div class="about-content"><p id="about-bio"></p></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- CHAT -->
+<section id="chat-page" class="page">
+    <div class="page-header">
+        <h1>💬 Mensajes</h1>
+        <p>Chatea con tus amigos</p>
+    </div>
+
+    <div class="chat-layout">
+        <aside class="chat-sidebar">
+            <div class="chat-sidebar-header">
+                <h3>Conversaciones</h3>
+            </div>
+            <div id="chat-list" class="chat-list"></div>
+        </aside>
+
+        <div class="chat-window">
+            <div id="chat-header" class="chat-header">
+                <div class="chat-header-empty">Selecciona un chat</div>
+            </div>
+
+            <div id="chat-messages" class="chat-messages">
+                <div class="chat-empty-state">No hay mensajes todavía.</div>
+            </div>
+
+            <form id="chat-form" class="chat-form">
+                <input type="text" id="chat-input" placeholder="Escribe un mensaje..." maxlength="500" autocomplete="off">
+                <button type="submit" class="btn-publish">Enviar ✨</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+            <!-- CONFIGURACIÓN -->
+            <section id="settings-page" class="page">
+                <div class="settings-panel">
+                    <h1>⚙️ Configuración</h1>
+                    <div class="settings-section"><h2>🎨 Elige tu estética</h2><div class="themes-grid" id="themes-grid"></div></div>
+                    <div class="settings-section">
+                        <h2>👤 Editar perfil</h2>
+                        <form id="settings-form" class="settings-form">
+                            <div class="form-group"><label>Nombre visible</label><input type="text" id="settings-name"></div>
+                            <div class="form-group"><label>Usuario</label><input type="text" id="settings-username" readonly></div>
+                            <div class="form-group"><label>Biografía</label><textarea id="settings-bio" rows="4"></textarea></div>
+                            <div class="form-group"><label>Mood / Estado</label><input type="text" id="settings-mood" placeholder="creativa, con sueño, feliz..."></div>
+                            <button type="submit" class="btn-publish">Guardar cambios ✨</button>
+                        </form>
+                    </div>
+                    <div class="settings-section danger-zone">
+                        <h2>🔐 Sesión</h2>
+                        <p>Cierra tu sesión en este dispositivo</p>
+                        <button id="clear-data-btn" class="btn-danger">Cerrar sesión</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="sidebar sidebar-right">
+            <div class="trending-box">
+                <h3 class="trending-title">🔥 Tendencias</h3>
+                <div class="trending-item"><span class="trend-tag">#aesthetic</span></div>
+                <div class="trending-item"><span class="trend-tag">#webcore</span></div>
+                <div class="trending-item"><span class="trend-tag">#y2k</span></div>
+                <div class="trending-item"><span class="trend-tag">#fairycore</span></div>
+            </div>
+            <div class="decoration-right"><p class="deco-text">~ ponte cómoda, estás en casa ~</p></div>
+        </aside>
+    </div>
+
+    <!-- MODAL: EDITAR PERFIL -->
+    <div id="edit-profile-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">✕</button>
+            <h2>Editar tu perfil</h2>
+            <form id="edit-form" class="edit-form">
+                <div class="form-group"><label>Nombre</label><input type="text" id="edit-name"></div>
+                <div class="form-group"><label>Biografía</label><textarea id="edit-bio" rows="3"></textarea></div>
+                <div class="form-group"><label>Foto de perfil (URL o archivo)</label>
+                    <input type="text" id="edit-avatar" placeholder="https://...">
+                    <input type="file" id="edit-avatar-file" accept="image/*"></div>
+                <div class="form-group"><label>Mood</label><input type="text" id="edit-mood"></div>
+                <button type="submit" class="btn-publish">Guardar ✨</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app.js"></script>
+</body>
+</html>
